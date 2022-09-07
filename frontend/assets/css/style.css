@@ -16,8 +16,11 @@ button, input {
   font-size: 16px;
   font-family: 'DM Sans';
   color: #3B3B3B;
-  border: none;
   outline: none;
+}
+
+button {
+  border: none;
 }
 
 /* Navbar */
@@ -60,6 +63,10 @@ button, input {
   padding: 0px 15px;
 }
 
+.search-contacts input {
+  border: none;
+}
+
 .search-contacts span {
   color: #5f6368;
 }
@@ -93,6 +100,13 @@ section {
 .container {
   display: flex;
   flex-direction: column;
+  width: 100%;
+  max-width: 1200px;
+  padding: 20px;
+}
+
+.login-container {
+  display: flex;
   width: 100%;
   max-width: 1200px;
   padding: 20px;
@@ -177,6 +191,39 @@ tbody tr:hover .contact-edit {
   background-color: #d1e7dd;
   color: #0f5132;
   border: 1px solid #badbcc;
+}
+
+.login {
+  width: 50%;
+  padding: 20px;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  width: 100%;
+  margin-top: 20px;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  margin-bottom: 20px;
+}
+
+.form-input {
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.form-btn {
+  border-radius: 5px;
+  padding: 10px;
+  background-color: #000;
+  color: white;
 }
 
 
