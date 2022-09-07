@@ -1,0 +1,193 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&display=swap');
+
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'DM Sans', sans-serif;
+  /* background-color: #f9f9f9; */
+  font-size: 16px;
+}
+
+button, input {
+  font-size: 16px;
+  font-family: 'DM Sans';
+  color: #3B3B3B;
+  border: none;
+  outline: none;
+}
+
+/* Navbar */
+
+.navbar {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  min-height: 100px;
+  background-color: #fff;
+}
+
+.nav-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  padding: 20px;
+  width: 100%;
+  max-width: 1200px;
+}
+
+.link-logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 24px;
+  color: #3B3B3B;
+  text-decoration: none;
+}
+
+.search-contacts {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background-color: #F1F3F4;
+  border-radius: 5px;
+  width: 250px; 
+  height: 45px;
+  padding: 0px 15px;
+}
+
+.search-contacts span {
+  color: #5f6368;
+}
+
+.search-input {
+  width: 100%;
+  min-height: 100%;
+  background-color: transparent;
+}
+
+.btn-addcontact {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  border-radius: 25px;
+  padding: 11px 16px;
+}
+
+.btn-login, .btn-logout {
+  background-color: transparent;
+  color: #000;
+}
+
+/* Section Container */
+section {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  max-width: 1200px;
+  padding: 20px;
+}
+
+.title {
+  padding-left: 16px;
+}
+
+/* Tabela */
+.table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+thead {
+  font-weight: normal;
+  border-bottom: 1px solid  #0000001f;
+}
+
+tbody {
+  vertical-align: middle;
+}
+
+th, td {
+  font-weight: normal;
+  text-align: left;
+  padding: 16px;
+  width: 33.33%;
+}
+
+td:last-child {
+  display: flex;
+  justify-content: space-between;
+}
+
+.contact-edit {
+  visibility: hidden;
+  display: flex;
+  gap: 10px;
+}
+
+.contact-edit span {
+  cursor: pointer;
+  color: #00000051;
+}
+
+.contact-edit span:hover {
+  color: #00000080;
+}
+
+tbody tr:hover {
+  background-color: #f5f5f5;
+}
+
+tbody tr:hover .contact-edit {
+  visibility: visible;
+}
+
+/* Alertas */
+.alert {
+  width: 80%;
+  border-radius: 6px;
+  background-color: transparent;
+  border: transparent;
+  padding: 1rem;
+}
+
+.alert-danger {
+  background-color: #f8d7da;
+  color: #842029;
+  border: 1px solid #f5c2c7;
+}
+
+.alert-warning {
+  background-color: #fff3cd;
+  color: #664d03;
+  border: 1px solid #ffecb5;
+}
+
+.alert-sucess {
+  background-color: #d1e7dd;
+  color: #0f5132;
+  border: 1px solid #badbcc;
+}
+
+
+/* Página de erro 404 */
+.error-title {
+  font-size: 92px;
+  font-weight: normal;
+}
+
+.error-subtitle {
+  font-size: 24px;
+  font-weight: normal;
+  margin-bottom: 10px;
+}
