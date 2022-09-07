@@ -1,0 +1,30 @@
+<%- include('includes/head') %>
+<%- include('includes/nav') %>
+
+<section>
+  <div class="login-container">
+    <img src="./assets/img/login.svg" alt="">
+    <div class="login">
+      <h1>Login</h1>
+      <p>Faça o login com a sua conta:</p>
+      <form action="/login" method="post" class="form">
+        <div class="form-group">
+          <label for="email">E-mail:</label>
+          <input type="email" name="email" id="email" class="form-input">
+        </div>
+        <div class="form-group">
+          <label for="password">Senha:</label>
+          <input type="password" name="password" id="password" class="form-input">
+        </div>
+        <button type="submit" class="form-btn">Entrar</button>
+      </form>
+    </div>
+    <!-- Alertas
+    <div class="alert alert-danger">Houve um erro</div>
+    <div class="alert alert-sucess">Parabéns, você ativou o alerta de sucesso</div>
+    <div class="alert alert-warning">Atenção! Tome muito cuidado</div> 
+    -->
+  </div>
+</section>
+
+<%- include('includes/footer') %>
