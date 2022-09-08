@@ -12,6 +12,10 @@ body {
   font-size: 16px;
 }
 
+h1 {
+  font-size: 32px;
+}
+
 button, input {
   font-size: 16px;
   font-family: 'DM Sans';
@@ -19,11 +23,42 @@ button, input {
   outline: none;
 }
 
+/*----------------------------------*/
+/*              Botões              */
+/*----------------------------------*/
+
 button {
+  cursor: pointer;
   border: none;
 }
 
-/* Navbar */
+.text-btn {
+  background-color: transparent;
+  color: #000;
+}
+
+.text-btn.bold {
+  font-weight: bold;
+}
+
+.btn-form {
+  border-radius: 5px;
+  padding: 12px 0px;
+  background-color: #000;
+  color: #fff;
+}
+
+.btn-addcontact {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  border-radius: 25px;
+  padding: 11px 16px;
+}
+
+/*----------------------------------*/
+/*              Navbar              */
+/*----------------------------------*/
 
 .navbar {
   display: flex;
@@ -77,27 +112,16 @@ button {
   background-color: transparent;
 }
 
-.btn-addcontact {
-  display: flex;
-  align-items: center;
-  gap: 5px;
-  border-radius: 25px;
-  padding: 11px 16px;
-}
-
-.btn-login, .btn-logout {
-  background-color: transparent;
-  color: #000;
-}
-
-/* Section Container */
+/*----------------------------------*/
+/*              Container           */
+/*----------------------------------*/
 section {
   width: 100%;
   display: flex;
   justify-content: center;
 }
 
-.container {
+.container, .login-container {
   display: flex;
   flex-direction: column;
   width: 100%;
@@ -106,20 +130,19 @@ section {
 }
 
 .login-container {
-  display: flex;
+  flex-direction: row;
+}
+
+/*----------------------------------*/
+/*              Tabela              */
+/*----------------------------------*/
+.table {
   width: 100%;
-  max-width: 1200px;
-  padding: 20px;
+  border-collapse: collapse;
 }
 
 .title {
   padding-left: 16px;
-}
-
-/* Tabela */
-.table {
-  width: 100%;
-  border-collapse: collapse;
 }
 
 thead {
@@ -166,9 +189,67 @@ tbody tr:hover .contact-edit {
   visibility: visible;
 }
 
-/* Alertas */
+/*--------------------------------------------*/
+/*        Formulário de Login e Cadastro      */
+/*--------------------------------------------*/
+
+.login {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  width: 50%;
+  padding: 10px 20px 20px 20px;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+  width: 100%;
+  margin: 10px 0px;
+}
+
+.form-group, .form-check {
+  display: flex;
+  gap: 5px;
+}
+
+.form-group {
+  flex-direction: column;
+}
+
+.forgotPwd {
+  flex-direction: row;
+  justify-content: space-between;
+  margin-top: 10px;
+}
+
+.form-input {
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.divider {
+  width: 100%;
+  height: 1px;
+  background-color: #0000001f;
+  margin: 20px 0px;
+}
+
+.row-group {
+  display: flex;
+  flex-direction: row; 
+  justify-content: center;
+  gap: 10px;
+}
+
+/*----------------------------------*/
+/*              Alertas             */
+/*----------------------------------*/
+
 .alert {
-  width: 80%;
+  width: 100%;
   border-radius: 6px;
   background-color: transparent;
   border: transparent;
@@ -193,41 +274,10 @@ tbody tr:hover .contact-edit {
   border: 1px solid #badbcc;
 }
 
-.login {
-  width: 50%;
-  padding: 20px;
-}
+/*----------------------------------*/
+/*        Página de Erro 404        */
+/*----------------------------------*/
 
-.form {
-  display: flex;
-  flex-direction: column;
-  gap: 20px;
-  width: 100%;
-  margin-top: 20px;
-}
-
-.form-group {
-  display: flex;
-  flex-direction: column;
-  gap: 5px;
-  margin-bottom: 20px;
-}
-
-.form-input {
-  padding: 10px;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-}
-
-.form-btn {
-  border-radius: 5px;
-  padding: 10px;
-  background-color: #000;
-  color: white;
-}
-
-
-/* Página de erro 404 */
 .error-title {
   font-size: 92px;
   font-weight: normal;
