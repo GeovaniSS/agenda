@@ -2,14 +2,14 @@
 // Todas as requisições em todas as rotas e métodos de roteamento passam nos Middlewares abaixo
 
 exports.checkCsrfError = (err, req, res, next) => {
-  // Se ocorrer o erro do CSRF, renderize a página 404
-  if(err.code === 'EBADCSRFTOKEN') {
-    return res.render('404')
-  }
+  if(err) return res.render('404')
+  next()
 }
 
 exports.csrfMiddleware = (req, res, next) => {
   // Cria o CSRF Token que será enviado nas requisições POST de formulários
   res.locals.csrfToken = req.csrfToken()
+  res.locals.errors = req.flash('errors')
+  res.locals.success = req.flash('success')
   next()
 }
