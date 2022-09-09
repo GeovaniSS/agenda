@@ -10,6 +10,7 @@ route.get('/', homeController.index)
 // Rotas de Login
 route.get('/login', loginController.index)
 route.post('/login', loginController.login)
+route.get('/login/logout', loginController.logout)
 
 // Rotas de Cadastro
 route.get('/register', registerController.index)
