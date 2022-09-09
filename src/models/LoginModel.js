@@ -5,13 +5,14 @@ const { Schema } = mongoose
 
 const LoginSchema = new Schema({
   email: { type: String, required: true }, 
-  password: { type: String, required: true}
+  password: { type: String, required: true }
 })
 
 const LoginModel = mongoose.model('Login', LoginSchema)
 
 // Operações com o Banco de Dados devem ser feitas em um ambiente assíncrono (Promises)
 // Métodos async (métodos assíncronos) que retornam Promises
+// Os erros serão tratados no controller, renderizando uma página 404 para o usuário
 
 class Login {
   constructor({ email, password }) {
@@ -21,16 +22,17 @@ class Login {
     this.user = null
   }
 
+  async login() {
+    await this.validateLogin()
+  }
+
   async register() {
-    await this.validate()
+    await this.validateRegistration()
+    
     if(this.errors.length > 0) return
 
-    try {
-      await this.hashPassword()
-      this.user = await LoginModel.create({ email: this.email, password: this.password })
-    } catch(e) {
-      console.log(e)
-    }
+    await this.hashPassword()
+    this.user = await LoginModel.create({ email: this.email, password: this.password })
   }
 
   async hashPassword() {
@@ -38,32 +40,42 @@ class Login {
     this.password = hash
   }
 
-  async validate() {
+  async validateLogin() {
+    const emptyFields = this.checkEmptyFields()
+    const emailExists = await this.checkExistingEmail()
+    const correctPassword = await this.checkPassword()
+
+    if(emptyFields) return this.errors.push('Informe o seu e-mail e a sua senha para fazer o login.')
+    if(!emailExists) return this.errors.push('O email inserido não pertence a uma conta. Verifique seu email e tente novamente.')
+    if(!correctPassword) return this.errors.push('Sua senha está incorreta. Tente novamente.')
+  }
+
+  async validateRegistration() {
     const emptyFields = this.checkEmptyFields()
     const emailIsValid = this.validateEmail()
     const passwordIsValid = this.validatePassword()
-    const existingEmail = await this.checkExistingEmail()
+    const emailExists = await this.checkExistingEmail()
 
-    if(emptyFields) this.errors.push('Os campos e-mail e senha são obrigatórios')
-    if(!emptyFields && existingEmail) this.errors.push('Email já cadastrado')
-    if(!emptyFields && !emailIsValid) this.errors.push('Email inválido')
-    if(!emptyFields && !passwordIsValid) this.errors.push(`A senha deve ter no mínimo 8 caracteres e possuir pelo menos 
-    uma letra maiúscula, uma letra minúscula, um número e um caracter especial`)
+    if(emptyFields) return this.errors.push('Os campos e-mail e senha são obrigatórios')
+    if(emailExists) return this.errors.push('Email já cadastrado')
+    if(!emailIsValid) return this.errors.push('Email inválido')
+    if(!passwordIsValid) return this.errors.push(`A senha deve ter no mínimo 8 caracteres e possuir pelo menos uma letra maiúscula, uma letra minúscula, um número e um caracter especial`)
+  }
+
+  async checkExistingEmail() {
+    this.user = await LoginModel.findOne({ email: this.email })
+    return this.user ? true : false
+  }
+
+  async checkPassword() {
+    if(!this.user) return
+    const hash = this.user.password
+    return await bcrypt.compare(this.password, hash)
   }
 
   checkEmptyFields() {
     if(this.email.trim().length === 0 && this.password.trim().length === 0) return true
     return false
-  }
-
-  async checkExistingEmail() {
-    try {
-      // const logins = await LoginModel.find({ email: this.email })
-      const userExists = await LoginModel.findOne({ email: this.email })
-      return userExists ? true : false
-    } catch(e) {
-      console.log(e)
-    }
   }
 
   validateEmail() {
