@@ -1,20 +1,30 @@
 <nav class="navbar">
   <div class="nav-container">
     <a href="/" class="link-logo">
-      <img src="./assets/img/contact-logo.png" alt="Contatos">
+      <img src="/assets/img/contact-logo.png" alt="Contatos">
       Agenda
     </a>
     <div class="search-contacts">
       <span class="material-symbols-outlined">search</span>
       <input type="search" class="search-input">
     </div>
-    <a href="/login">
-      <button class="text-btn">Entrar</button>
-    </a>
-    <!-- <button class="btn-addcontact">
-      <span class="material-symbols-outlined">person_add</span>
-      Criar contato
-    </button>
-    <button class="text-btn">Sair</button> -->
+    
+    <div class="nav-btns">
+      <a href="/contact">
+        <button class="btn-addcontact">
+          <span class="material-symbols-outlined">person_add</span>
+          Criar contato
+        </button>
+      </a>
+      <% if(user) { %>
+          <a href="/login/logout">
+            <button class="text-btn">Sair</button>
+          </a>
+      <% } else { %>
+          <a href="/login">
+            <button class="text-btn">Entrar</button>
+          </a>
+      <% } %>
+  </div>
   </div>
 </nav>
