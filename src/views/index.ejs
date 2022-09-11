@@ -3,34 +3,52 @@
 
 <section>
   <div class="container">
-    <h1 class="title">Contatos</h1>
-    <%- include('includes/messages') %>
-    <table class="table">
-      <thead>
-        <th>Nome</th>
-        <th>E-mail</th>
-        <th>Número de telefone</th>
-      </thead>
-      <tbody>
-        <tr>
-          <td>
-            <span>Geovani Silva</span>
-          </td>
-          <td>
-            <span>geosilvasousa@gmail.com</span>
-          </td>
-          <td>
-            <span>+5561984950007</span>
-          </td>
-          <td>
-            <div class="contact-edit">
-              <span class="material-symbols-outlined">edit</span>
-              <span class="material-symbols-outlined">delete</span>
-            </div>
-          </td>
-        </tr>
-      </tbody>
-    </table>
+    <% if(contacts.length > 0) { %>
+      <div class="contacts">
+        <h1 class="title">Contatos</h1>
+
+        <%- include('includes/messages') %>
+
+        <table class="table">
+          <thead>
+            <th>Nome</th>
+            <th>E-mail</th>
+            <th>Número de telefone</th>
+          </thead>
+          <tbody>
+            <% contacts.forEach(contact => { %>
+                <tr>
+                  <td>
+                    <span><%=contact.name%></span>
+                  </td>
+                  <td>
+                    <span><%=contact.email%></span>
+                  </td>
+                  <td>
+                    <span><%=contact.phone%></span>
+                  </td>
+                  <td>
+                    <div class="contact-edit">
+                      <a href="/contact/<%=contact._id%>">
+                        <span class="material-symbols-outlined">edit</span>
+                      </a>
+                      <a href="/contact/<%=contact._id%>/delete">
+                        <span class="material-symbols-outlined">delete</span>
+                      </a>
+                    </div>
+                  </td>
+                </tr>
+            <% }) %>
+          </tbody>
+        </table>
+      </div>
+    <% } else { %>
+      <div class="empty-contacts">
+        <%- include('includes/messages') %>
+        <img src="/assets/img/empty.svg">
+        <p>Ainda não há contatos</p>
+      </div>
+    <% } %>
   </div>
 </section>
 
