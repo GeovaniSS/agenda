@@ -1,7 +1,6 @@
 const Login = require('../models/LoginModel')
 
 exports.index = (req, res) => {
-  if(req.session.user) return res.redirect('/')
   return res.render('login')
 }
 
@@ -12,18 +11,17 @@ exports.login = async(req, res, next) => {
 
     if(login.errors.length > 0) {
       req.flash('errors', login.errors)
-      return req.session.save(() => {
-        return res.redirect('/login')
-      })
+      req.session.save(() => res.redirect('/login'))
+      return
     }
 
     req.session.user = login.user
     req.flash('success', 'Login efetuado com sucesso!')
-    return req.session.save(() => {
-      return res.redirect('/')
-    })
+    req.session.save(() => res.redirect('/'))
+    return
   } catch(e) {
     console.log(e)
+    return res.render('404')
   }
 }
 
