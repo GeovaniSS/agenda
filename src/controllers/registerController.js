@@ -1,7 +1,6 @@
 const Login = require('../models/LoginModel')
 
 exports.index = (req, res, next) => {
-  if(req.session.user) return res.redirect('/')
   return res.render('register')
 }
 
@@ -12,15 +11,13 @@ exports.register = async(req, res, next) => {
   
     if(login.errors.length > 0) {
       req.flash('errors', login.errors)
-      return req.session.save(() => {
-        return res.redirect('/register')
-      })
+      req.session.save(() => res.redirect('/register'))
+      return
     }
 
     req.flash('success', 'Cadastro realizado com sucesso!')
-    return req.session.save(() => {
-      return res.redirect('/login')
-    })
+    req.session.save(() => res.redirect('/login'))
+    return
   } catch(e) {
     console.log(e)
     return res.render('404')
