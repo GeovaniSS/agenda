@@ -1,6 +1,10 @@
 <%- include('includes/head') %>
 <%- include('includes/nav') %>
 
+<div class="search-contacts mobile">
+  <span class="material-symbols-outlined">search</span>
+  <input type="search" class="search-input">
+</div>
 <section>
   <div class="container">
     <% if(contacts.length > 0) { %>
@@ -11,23 +15,23 @@
 
         <table class="table">
           <thead>
-            <th>Nome</th>
-            <th>E-mail</th>
-            <th>Número de telefone</th>
+            <th class="th-name">Nome</th>
+            <th class="th-email">E-mail</th>
+            <th class="th-phone">Número de telefone</th>
           </thead>
           <tbody>
             <% contacts.forEach(contact => { %>
                 <tr>
-                  <td>
+                  <td class="td-name">
                     <span><%=contact.name%></span>
                   </td>
-                  <td>
+                  <td class="td-email">
                     <span><%=contact.email%></span>
                   </td>
-                  <td>
+                  <td class="td-phone">
                     <span><%=contact.phone%></span>
                   </td>
-                  <td>
+                  <td class="td-btns">
                     <div class="contact-edit">
                       <a href="/contact/<%=contact._id%>">
                         <span class="material-symbols-outlined">edit</span>
