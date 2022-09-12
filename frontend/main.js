@@ -8,12 +8,6 @@ import Register from './modules/Register'
 
 const alerts = document.querySelectorAll('.alert')
 
-setTimeout(() => {
-  alerts.forEach(alert =>  { 
-    alert.style.display = 'none'
-  })
-}, 2000)
-
 if(location.pathname.includes('register')) {
   const register = new Register()
 }
@@ -25,3 +19,17 @@ if(location.pathname.includes('login')) {
 if(location.pathname.includes('contact')) {
   const contact = new Contact()
 }
+
+const animation = () => {
+  setTimeout(() => {
+    alerts.forEach(alert =>  {
+      alert.classList.remove('fade-in')
+      alert.classList.add('fade-out') 
+      setTimeout(() => {
+        alert.style.display = 'none'
+      }, 2000)
+    })
+  }, 1000)
+}
+
+animation()
