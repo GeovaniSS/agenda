@@ -23,6 +23,11 @@ button, input {
   outline: none;
 }
 
+a {
+  text-decoration: none;
+  color: #3B3B3B;
+}
+
 /*----------------------------------*/
 /*              Botões              */
 /*----------------------------------*/
@@ -78,13 +83,22 @@ button {
   max-width: 1200px;
 }
 
+.nav-btns {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
 .link-logo {
   display: flex;
   align-items: center;
-  gap: 10px;
-  font-size: 24px;
-  color: #3B3B3B;
+  gap: 5px;
+  color: #181616;
   text-decoration: none;
+}
+
+.link-logo h1 {
+  font-size: 24px;
 }
 
 .search-contacts {
@@ -93,7 +107,7 @@ button {
   gap: 10px;
   background-color: #F1F3F4;
   border-radius: 5px;
-  width: 250px; 
+  min-width: 250px; 
   height: 45px;
   padding: 0px 15px;
 }
@@ -104,6 +118,10 @@ button {
 
 .search-contacts span {
   color: #5f6368;
+}
+
+.search-contacts.mobile {
+  display: none;
 }
 
 .search-input {
@@ -121,7 +139,7 @@ section {
   justify-content: center;
 }
 
-.container, .login-container {
+.container, .container-row {
   display: flex;
   flex-direction: column;
   width: 100%;
@@ -129,7 +147,7 @@ section {
   padding: 20px;
 }
 
-.login-container {
+.container-row {
   flex-direction: row;
 }
 
@@ -244,6 +262,27 @@ tbody tr:hover .contact-edit {
   gap: 10px;
 }
 
+.contact {
+  width: 100%;
+  padding: 0px 16px;
+}
+
+.contacts {
+  width: 100%;
+}
+
+.empty-contacts {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 30px;
+}
+
+.empty-contacts img {
+  width: 50%;
+}
+
 /*----------------------------------*/
 /*              Alertas             */
 /*----------------------------------*/
@@ -254,18 +293,13 @@ tbody tr:hover .contact-edit {
   background-color: transparent;
   border: transparent;
   padding: 1rem;
+  margin: 10px 0;
 }
 
 .alert-danger {
   background-color: #f8d7da;
   color: #842029;
   border: 1px solid #f5c2c7;
-}
-
-.alert-warning {
-  background-color: #fff3cd;
-  color: #664d03;
-  border: 1px solid #ffecb5;
 }
 
 .alert-sucess {
@@ -287,4 +321,81 @@ tbody tr:hover .contact-edit {
   font-size: 24px;
   font-weight: normal;
   margin-bottom: 10px;
+}
+
+.error {
+  border: 1px solid red;
+}
+
+.error-message {
+  color: red;
+}
+
+/*----------------------------------*/
+/*          Responsividade          */
+/*----------------------------------*/
+
+@media screen and (min-width: 320px) and (max-width: 560px) {
+  .search-contacts {
+    display: none;
+  }
+
+  .search-contacts.mobile {
+    display: flex;
+    width: 85%;
+    margin: 0 auto;
+  }
+
+  .th-email, .td-email {
+    display: none;
+  }
+}
+
+
+@media screen and (min-width: 320px) and (max-width: 700px) {
+  .btn-addcontact {
+    position: fixed;
+    bottom: 10%;
+    padding: 12px 14px;
+  }
+
+  .btn-addcontact :first-child {
+    font-size: 28px;
+  }
+
+  .btn-addcontact :last-child {
+    display: none;
+  }
+}
+
+/*----------------------------------*/
+/*      Animações das Mensagens     */
+/*----------------------------------*/
+
+.fade-in {
+  animation: fadeIn 1s;
+}
+
+.fade-out {
+  animation: fadeOut 2s;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes fadeOut {
+  from {
+    opacity: 1;
+  }
+
+  to {
+    opacity: 0;
+  }
 }
