@@ -1,7 +1,7 @@
 <!-- Alertas -->
 
 <% if (errors.length > 0) { %>
-<div class="alert alert-danger">
+<div class="alert alert-danger fade-in">
   <% errors.forEach(erro => { %>
     <%= erro %> <br>
   <% }) %>
@@ -9,7 +9,7 @@
 <% } %>
 
 <% if(success.length > 0) { %>
-<div class="alert alert-sucess">
+<div class="alert alert-sucess fade-in">
   <% success.forEach(success => { %>
     <%= success %> <br>
   <% }) %>
